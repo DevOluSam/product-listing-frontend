@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <HeaderView/>
-    
     <router-view/>
     <FooterView/>
   </div>
@@ -9,14 +8,12 @@
 
 <script>
 import HeaderView from './components/HeaderView.vue'
-// import ProductCard from './components/ProductCard.vue'
 import FooterView from './components/FooterView.vue'
 
 export default {
   name: 'App',
   components: {
     HeaderView,
-    // ProductCard,
     FooterView
   }
 }

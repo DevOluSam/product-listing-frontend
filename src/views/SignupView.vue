@@ -10,7 +10,7 @@
         </p>
     
         <form action="#" class="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
-          <p class="text-center text-lg font-medium">Log in to your account</p>
+          <p class="text-center text-lg font-medium">Create an account</p>
     
           <div>
             <label for="email" class="sr-only">Email</label>
@@ -41,12 +41,12 @@
             type="submit"
             class="block w-full rounded-lg bg-teal-600 px-5 py-3 text-sm font-medium text-white"
           >
-            Log in
+            Sign up
           </button>
     
           <p class="text-center text-sm text-gray-500">
-            No account?
-            <router-link to="/signup">Signup</router-link>
+            Already have an account?
+            <router-link to="/signup">Log in</router-link>
           </p>
         </form>
       </div>
