@@ -9,14 +9,14 @@
           inventore quaerat mollitia?
         </p>
     
-        <form action="#" class="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
+        <form @submit.prevent="post" class="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
           <p class="text-center text-lg font-medium">Log in to your account</p>
     
           <div>
             <label for="email" class="sr-only">Email</label>
     
             <div class="relative">
-              <input
+              <input v-model="email" 
                 type="email"
                 class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                 placeholder="Enter email"
@@ -29,7 +29,7 @@
             <label for="password" class="sr-only">Password</label>
     
             <div class="relative">
-              <input
+              <input v-model="password" 
                 type="password"
                 class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                 placeholder="Enter password"
@@ -37,7 +37,7 @@
             </div>
           </div>
     
-          <button
+          <button v-on:click.prevent="post"
             type="submit"
             class="block w-full rounded-lg bg-teal-600 px-5 py-3 text-sm font-medium text-white"
           >
@@ -55,9 +55,45 @@
 
 
 <script>
+import axios from 'axios'
+import { mapActions } from 'vuex';
+import router from '@/router'
 export default {
   data() {
-   
+   return {
+     email: '',
+     password: ''
+   }
+  },
+  methods: {
+    ...mapActions(['saveToken', 'saveCreatedBy']),
+    async post() {
+      if (!this.email || !this.password) {
+        alert('Please fill in all fields');
+        return;
+      }
+
+      const payload = {
+        email: this.email,
+        password: this.password
+      };
+
+      try {
+        const response = await axios.post('https://product-listing-backend-ls9q.onrender.com/users/login', payload);
+
+        if (response.data.token) {
+          this.saveToken(response.data.token);
+          this.saveCreatedBy (response.data.createdBy);
+          router.push({ name: 'dashboard' });
+        } else {
+          router.push({name: 'signup'})
+        }
+      } catch (error) {
+        router.push({name: 'signup'})
+        
+      }
+    }
   }
-}
+  }
+
 </script>

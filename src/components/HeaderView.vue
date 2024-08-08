@@ -1,10 +1,7 @@
 <template>
-    <ul class="flex flex-row gap-3 bg-gray-50 justify-end mx-4">
+    <ul class="flex flex-row gap-3 bg-gray-50 justify-end">
       <li class="p-6">
-        <router-link to="/">Home</router-link>
-      </li>
-      <li class="p-6">
-        <router-link to="/login">Login</router-link>
+        <router-link to="/">Login</router-link>
       </li>
       <li class="p-6">
         <router-link to="/signup">Signup</router-link>

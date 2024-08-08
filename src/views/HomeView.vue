@@ -1,17 +1,17 @@
 <template>
-  <div>
-    <ProductCard/>
+  <div class="flex flex-col min-h-screen">
+    <div>
+      
+    </div>
   </div>
 </template>
 
 <script>
-// import { mapState } from 'vuex'
-import ProductCard from '../components/ProductCard.vue'
+
+
 
 export default {
-  components: {
-    ProductCard
-  },
+
   data() {
     return {
       search: ''
