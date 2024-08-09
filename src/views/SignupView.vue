@@ -13,7 +13,7 @@
           <p class="text-center text-lg font-medium">Create an account</p>
             <p v-if="message" :class="messageClass">{{ message }}</p>
           <div>
-            <label for="email" class="sr-only">Username</label>
+            <label for="username" class="sr-only">Username</label>
     
             <div class="relative">
               <input v-model="username"
@@ -92,7 +92,7 @@ export default {
         password: this.password
       };
 
-        const response = await axios.post('https://product-listing-backend-ls9q.onrender.com', payload);
+        const response = await axios.post('https://product-listing-backend-ls9q.onrender.com/users/signup', payload);
 
         if (response.data.SuccessMessage) {
           this.message = response.data.SuccessMessage;
